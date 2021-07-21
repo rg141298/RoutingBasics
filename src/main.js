@@ -57,11 +57,11 @@ router.beforeEach(function(to, from, next){
 });
 
 //Global Navigation Guard (afterEach)
-// router.afterEach(function(to,from){
-//   //send analytics data
-//   console.log('Global afterEach');
-//   console.log(to,from);
-// });
+router.afterEach(function(to,from){
+  //send analytics data
+  console.log('Global afterEach');
+  console.log(to,from);
+});
 
 const app = createApp(App)
 
