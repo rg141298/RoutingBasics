@@ -32,17 +32,36 @@ const router = createRouter({
         { default: UsersList,
           footer:UsersFooter
         },
+      beforeEnter(to,from,next){
+        console.log('users beforeEnter');
+        console.log(to,from);
+        next();
+      }
     },
     {path:'/:notFound(.*)',component:NotFound}
     ],
-  scrollBehavior(to,from,savedPosition){
-    console.log(to,from,savedPosition);
+  scrollBehavior(_,_2, savedPosition){
+    // console.log(to,from,savedPosition);
     if(savedPosition){
       return savedPosition;
     }
     return{ left:0, top:0};
   }
 });
+
+//Global Navigation Guard (beforeEach)
+router.beforeEach(function(to, from, next){
+  console.log('Global beforeEach');
+  console.log(to, from);
+  next();
+});
+
+//Global Navigation Guard (afterEach)
+// router.afterEach(function(to,from){
+//   //send analytics data
+//   console.log('Global afterEach');
+//   console.log(to,from);
+// });
 
 const app = createApp(App)
 

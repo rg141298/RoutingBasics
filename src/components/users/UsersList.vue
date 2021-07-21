@@ -12,6 +12,11 @@ export default {
     UserItem,
   },
   inject: ['users'],
+  beforeRouteEnter(to,from,next){
+    console.log('UsersList Comp beforeRouteEnter');
+    console.log(to,from);
+    next();
+  }
 };
 </script>
 
